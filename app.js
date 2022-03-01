@@ -13,12 +13,6 @@ const errorHandler = require("./middleware/errorHandler");
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send(
-    '<h1>Welcome to the store api</h1> <a href= "api/v1/products"> Go to the products json</a>'
-  );
-});
-
 app.use("/api/v1/products", productsRouter);
 
 const PORT = process.env.PORT || 5000;
