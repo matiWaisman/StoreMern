@@ -1,0 +1,29 @@
+.inline {
+    display: inline-block;
+    display: flex;
+}
+
+.rating {
+    text-align: center !important;
+}
+
+.center {
+    display: inline-block;
+}
+
+.center-horizontal {
+    position: relative;
+    left: 40%;
+
+}
+
+.porcentaje {
+    color: green;
+    margin-left: 0.2rem;
+}
+
+.original-price {
+    color: grey;
+    text-decoration: line-through;
+    font-size: 15px;
+}

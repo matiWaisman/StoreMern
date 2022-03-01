@@ -1,0 +1,147 @@
+[
+    {
+      "name": "Air Jordan 1 Mid",
+      "price": 120,
+      "company": "Air Jordan",
+      "rating": 4.5,
+      "img" : "https://www.thenextsole.com/storage/images/BQ6931-037.png",
+      "featured":false
+    },
+    {
+      "name": "Air Jordan 4 Retro",
+      "price": 150,
+      "company": "Air Jordan",
+      "rating": 5,
+      "img" : "https://www.thenextsole.com/storage/images/CI1184-617.png",
+      "featured":false
+    },
+    {
+      "name": "Air Jordan 5 Low Neymar",
+      "price": 200,
+      "company": "Air Jordan",
+      "rating": 5,
+      "img" : "https://www.thenextsole.com/storage/images/846315-025-WECHAT-DS.png",
+      "featured":false
+    },
+    {
+      "name": "Adidas Yeezy Boost 350 V2",
+      "price": 220,
+      "company": "Adidas",
+      "rating": 5,
+      "img" : "https://www.thenextsole.com/storage/images/AH2203.png",
+      "featured":false
+    },
+    {
+      "name": "Adidas x Pharrell x NMD",
+      "price": 250,
+      "company": "Adidas",
+      "rating": 4.5,
+      "img" : "https://www.thenextsole.com/storage/images/AC7359.png",
+      "featured":false
+    },
+    {
+      "name": "Adidas NMD R1 V2",
+      "price": 130,
+      "company": "Adidas",
+      "rating": 4.5,
+      "img" : "https://www.thenextsole.com/storage/images/GV8251.png",
+      "featured":false
+    },
+    {
+      "name": "Nike Adapt Huarache",
+      "price": 350,
+      "featured": true,
+      "company": "Nike",
+      "rating": 5,
+      "img" : "https://www.thenextsole.com/storage/images/BV6397-002.png"
+    },
+    {
+      "name": "Puma Wild Rider Rollin",
+      "price": 103,
+      "featured": true,
+      "company": "Puma",
+      "rating": 4.5,
+      "img" : "https://www.thenextsole.com/storage/images/382028-03.png"
+    },
+  
+    {
+      "name": "Puma RS-X MIX",
+      "price": 152,
+      "company": "Puma",
+      "rating": 4,
+      "img" : "https://www.thenextsole.com/storage/images/928583-01.png",
+      "featured":false
+    },
+    {
+      "name": "Balenciaga SPEED 2.0 LT",
+      "price": 1050,
+      "featured": true,
+      "company": "Balenciaga",
+      "rating": 4.5,
+      "img" : "https://www.thenextsole.com/storage/images/587280-W05G9.png"
+    },
+    {
+      "name": "Reebok Face Stockholm",
+      "price": 104,
+      "company": "Reebok",
+      "rating": 3,
+      "img" : "https://www.thenextsole.com/storage/images/BD2681.png",
+      "featured":false
+    },
+    {
+      "name": "Adidas Futurecraft",
+      "price": 220,
+      "company": "Adidas",
+      "rating": 4.5,
+      "img" : "https://www.thenextsole.com/storage/images/BD7400.png",
+      "featured":false
+    },
+    {
+      "name": "New Balance 327",
+      "price": 99,
+      "company": "New Balance",
+      "rating": 4,
+      "img" : "https://www.thenextsole.com/storage/images/ML574NFO.png",
+      "featured":false
+    },
+    {
+      "name": "New Balance 574",
+      "price": 80,
+      "company": "New Balance",
+      "rating": 4,
+      "img" : "https://www.thenextsole.com/storage/images/GC574FW1.png",
+      "featured":false
+    },
+    {
+      "name": "Nike Air Yeezy",
+      "price": 31485,
+      "company": "Nike",
+      "rating": 5,
+      "img" : "https://www.thenextsole.com/storage/images/508214-660.png",
+      "featured":false
+    },
+    {
+      "name": "New Balance 624",
+      "price": 65,
+      "featured": true,
+      "company": "New Balance",
+      "rating": 3,
+      "img" : "https://www.thenextsole.com/storage/images/WX624AB5.png"
+    },
+    {
+      "name": "Nike Air Force 1 Off-White",
+      "price": 2628,
+      "featured": true,
+      "company": "Nike",
+      "rating": 5,
+      "img" : "https://www.thenextsole.com/storage/images/AO4606-001.png"
+    },
+    {
+      "name": "Adidas BYW",
+      "price": 1749,
+      "company": "Adidas",
+      "rating": 4,
+      "img" : "https://www.thenextsole.com/storage/images/B41858.png",
+      "featured":false
+    }
+  ]

@@ -1,0 +1,8 @@
+.my-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.child {
+    flex: 1 0 21%;
+}

@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+/**
+ * Base styles
+ */
+
+
+
+h4 {
+  margin-top: 0;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.preview-zone {
+  display: inline-block;
+  padding: 1.5625vw;
+  margin: 0.78125vw;
+  background-color: #1a1a1a;
+}
+
+/**
+ * Search styles
+ */
+
+// Colors
+$input-color: #2f4c58;
+$button-color: #6e93d6;
+$icon-color: #6e93d6;
+
+// Namespace
+$ns: '.search';
+
+#{$ns} {
+  &__form {
+    display: flex;
+  }
+
+  // Large modifier
+  &--large {
+    #{$ns}__input {
+      padding: 1.5625vw;
+    }
+    
+    #{$ns}__btn-submit {
+      padding: 1.5625vw;
+    }
+  }
+  
+  // Swapped modifier
+  &--swap {
+    #{$ns}__input {
+      order: 1;
+    }
+  }
+  
+  // Icon modifier
+  &--icon {
+    #{$ns}__form {
+      position: relative;
+    }
+
+    #{$ns}__btn-submit {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 0;
+      width: 2.3958333333333335vw;
+      height: 100%;
+      background: none;
+      
+      &:focus,
+      &:active,
+      &:hover {
+        box-shadow: none;
+        
+        &:before {
+          border-color: #eee;
+        }
+        
+        &:after {
+          background-color: #eee;
+        }
+      }
+      
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        transition: background-color 200ms ease-out,
+                    border-color 200ms ease-out;
+      }
+      
+      &:before {
+        right: 0.4166666666666667vw;
+        top: 0.8255933952528379vh;
+        width: 0.8333333333333334vw;
+        height: 1.6511867905056758vh;
+        border: 3px solid $icon-color;
+        border-radius: 100%;
+      }
+      
+      &:after {
+        right: 1.5625vw;
+        top: 2.3735810113519094vh;
+        width: 0.15625vw;
+        height: 16px;
+        background-color: $icon-color;
+        transform: rotate(45deg);
+      }
+      
+      &:hover {
+        background: none;
+      }
+    }
+  }
+  
+  // Icon (Expandable) modifier
+  &--icon-expandable {
+    #{$ns}__input {
+      transform: scaleX(0);
+      transform-origin: right center;
+      transition: transform 300ms ease-out;
+      
+      &:focus,
+      &:active {
+        transform: scaleX(1);
+      }
+    }
+    
+    #{$ns}__btn-submit {
+      background-color: $input-color;
+      
+      &:hover {
+        background-color: $input-color;
+      }
+    }
+  }
+  
+  &--expanded {
+    #{$ns}__input {
+      transform: scaleX(1);
+    }
+  }
+  
+  &__input,
+  &__btn-submit {
+    &:focus,
+    &:active {
+      outline: 0;
+      box-shadow: 0 0 16px rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &__input {
+    padding: 15px;
+    width: 180px;
+    color: #eee;
+    font-size: 14px;
+    background-color: $input-color;
+    border: 0;
+  }
+  
+  &__btn-submit {
+    position: relative;
+    padding: 15px;
+    color: #eee;
+    font-size: 13px;
+    background-color: #6e93d6;
+    border: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 200ms ease-out;
+    
+    &:hover {
+      background-color: $button-color;
+    }
+  }
+}
