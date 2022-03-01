@@ -1,5 +1,6 @@
 import "./App.css";
-import { Row, Col, Container } from "react-bootstrap";
+import { Helmet } from "react-helmet";
+import { Row, Container } from "react-bootstrap";
 import Sidebar from "./components/sidebar";
 import ListadoProduct from "./components/listadoProduct";
 import { ProductProvider } from "./context/productContext";
@@ -13,6 +14,12 @@ function App() {
   return (
     <ProductProvider>
       <div className="App">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Store Mern</title>
+          <meta name="description" content="Store Mern" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Helmet>
         <Container fluid className="mt-5 mb-5">
           <Row className="g-2 ml-5">
             <div className="col-md-3">

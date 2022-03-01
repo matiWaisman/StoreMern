@@ -2,6 +2,7 @@ const express = require("express");
 const productsRouter = require("./routes/products");
 require("dotenv").config();
 require("express-async-errors");
+const path = require("path");
 
 const app = express();
 
@@ -20,9 +21,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/products", productsRouter);
 
-app.use(errorHandler);
-app.use(notFound);
-
 const PORT = process.env.PORT || 5000;
 
 const start = async () => {
@@ -33,5 +31,21 @@ const start = async () => {
     console.log(error);
   }
 };
+
+app.use(errorHandler);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/client/build")));
+  app.get("*", (req, res) => {
+    const indexPath = path.join(__dirname, "client", "build", "index.html");
+    res.sendFile(indexPath);
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Api running");
+  });
+}
+
+app.use(notFound);
 
 start();
