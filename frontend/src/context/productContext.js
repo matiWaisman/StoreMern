@@ -3,6 +3,20 @@ import qs from "query-string";
 
 export const ProductContext = createContext();
 
+// Obtén la URL del servidor desde la variable de entorno
+const serverUrl = process.env.REACT_APP_SERVER_URL;
+
+const configs = {
+  development: {
+    SERVER_URI: "localhost:8080",
+  },
+  production: {
+    SERVER_URI: serverUrl,
+  },
+};
+
+module.exports.config = configs[process.env.NODE_ENV];
+
 export const ProductProvider = (props) => {
   const [productList, setProductList] = useState([]);
   const [products, setProducts] = useState([]);
@@ -26,7 +40,9 @@ export const ProductProvider = (props) => {
   const [maxFilter, setMaxFilter] = useState("");
 
   const getProductList = async (url) => {
-    const response = await fetch(url);
+    const response = await fetch(
+      `${configs[process.env.NODE_ENV].SERVER_URI}${url}`
+    );
     const responseJson = await response.json();
     if (responseJson) {
       setProductList(responseJson.products);
@@ -34,7 +50,9 @@ export const ProductProvider = (props) => {
   };
 
   const getProducts = async () => {
-    const response = await fetch("/api/v1/products?all=true");
+    const response = await fetch(
+      `${configs[process.env.NODE_ENV].SERVER_URI}/api/v1/products?all=true`
+    );
     const responseJson = await response.json();
     if (responseJson) {
       setProducts(responseJson.products);
@@ -60,7 +78,11 @@ export const ProductProvider = (props) => {
 
   const getAmountBrandProducts = async () => {
     for (var i = 0; i < brands.length; i++) {
-      const response = await fetch(`/api/v1/products?company=${brands[i]}`);
+      const response = await fetch(
+        `${configs[process.env.NODE_ENV].SERVER_URI}/api/v1/products?company=${
+          brands[i]
+        }`
+      );
       const responseJson = await response.json();
       if (responseJson) {
         setAmountBrandProducts((old) => [...old, responseJson.amount]);
@@ -92,12 +114,11 @@ export const ProductProvider = (props) => {
       },
     });
     setUrlState(url);
-    if (maxFilter != "" && minFilter != "") {
+    if (maxFilter !== "" && minFilter !== "") {
       var filteredList = productList.filter(
         (product) => product.price >= minFilter && product.price <= maxFilter
       );
       setProductList(filteredList);
-      console.log(productList);
     } else {
       getProductList(url);
     }
@@ -108,6 +129,8 @@ export const ProductProvider = (props) => {
     featuredFilter,
     minFilter,
     maxFilter,
+    productList,
+    urlState,
   ]);
 
   useEffect(() => {
