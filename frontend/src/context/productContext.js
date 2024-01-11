@@ -45,21 +45,108 @@ export const ProductProvider = (props) => {
     }
   };
 
-  // ... (otras funciones)
+  const getBrands = async () => {
+    var brandsArray = [];
+    brandsArray.push(products[0].company);
+    for (var i = 1; i < products.length; i++) {
+      var isEqual = false;
+      for (var x = 0; x < brandsArray.length; x++) {
+        if (products[i].company === brandsArray[x]) {
+          isEqual = true;
+        }
+      }
+      if (isEqual === false) {
+        brandsArray.push(products[i].company);
+      }
+    }
+    setBrands(brandsArray);
+  };
+
+  const getAmountBrandProducts = async () => {
+    for (var i = 0; i < brands.length; i++) {
+      const response = await fetch(
+        `${serverUrl}/api/v1/products?company=${brands[i]}`
+      );
+      const responseJson = await response.json();
+      if (responseJson) {
+        setAmountBrandProducts((old) => [...old, responseJson.amount]);
+      }
+    }
+  };
 
   useEffect(() => {
     getProductList(urlState);
-    // ... (otras llamadas a funciones)
+    getProducts();
   }, [urlState]);
 
-  // ... (otros useEffect)
+  useEffect(() => {
+    getBrands();
+  }, [products]);
+
+  useEffect(() => {
+    getAmountBrandProducts();
+  }, [brands]);
+
+  useEffect(() => {
+    const url = qs.stringifyUrl({
+      url: urlState,
+      query: {
+        name: search || undefined,
+        company: brandFilter,
+        featured: featuredFilter,
+        sort: orderingFilter,
+      },
+    });
+    setUrlState(url);
+    if (maxFilter !== "" && minFilter !== "") {
+      var filteredList = productList.filter(
+        (product) => product.price >= minFilter && product.price <= maxFilter
+      );
+      setProductList(filteredList);
+    } else {
+      getProductList(url);
+    }
+  }, [
+    search,
+    brandFilter,
+    orderingFilter,
+    featuredFilter,
+    minFilter,
+    maxFilter,
+    productList,
+    urlState,
+  ]);
+
+  useEffect(() => {
+    getProductList(urlState);
+  }, [urlState]);
 
   return (
     <ProductContext.Provider
       value={{
         productList,
         setProductList,
-        // ... (otros valores del contexto)
+        products,
+        setProducts,
+        brandFilter,
+        setBrandFilter,
+        getProductList,
+        brands,
+        amountBrandProducts,
+        search,
+        setSearch,
+        checked,
+        setChecked,
+        urlState,
+        setUrlState,
+        orderingFilter,
+        setOrderingFilter,
+        featuredFilter,
+        setFeaturedFilter,
+        setMinFilter,
+        setMaxFilter,
+        minFilter,
+        maxFilter,
       }}
     >
       {props.children}
