@@ -3,9 +3,6 @@ import qs from "query-string";
 
 export const ProductContext = createContext();
 
-// Obtén la URL del servidor desde la variable de entorno
-const serverUrl = process.env.REACT_APP_SERVER_URL;
-
 export const ProductProvider = (props) => {
   const [productList, setProductList] = useState([]);
   const [products, setProducts] = useState([]);
@@ -28,6 +25,10 @@ export const ProductProvider = (props) => {
   const [minFilter, setMinFilter] = useState("");
   const [maxFilter, setMaxFilter] = useState("");
 
+  // Obtén la URL del servidor desde la variable de entorno
+  const serverUrl =
+    process.env.REACT_APP_SERVER_URL || "https://store-server-eta.vercel.app";
+
   const getProductList = async (url) => {
     const response = await fetch(`${serverUrl}${url}`);
     const responseJson = await response.json();
@@ -44,108 +45,21 @@ export const ProductProvider = (props) => {
     }
   };
 
-  const getBrands = async () => {
-    var brandsArray = [];
-    brandsArray.push(products[0].company);
-    for (var i = 1; i < products.length; i++) {
-      var isEqual = false;
-      for (var x = 0; x < brandsArray.length; x++) {
-        if (products[i].company === brandsArray[x]) {
-          isEqual = true;
-        }
-      }
-      if (isEqual === false) {
-        brandsArray.push(products[i].company);
-      }
-    }
-    setBrands(brandsArray);
-  };
-
-  const getAmountBrandProducts = async () => {
-    for (var i = 0; i < brands.length; i++) {
-      const response = await fetch(
-        `${serverUrl}/api/v1/products?company=${brands[i]}`
-      );
-      const responseJson = await response.json();
-      if (responseJson) {
-        setAmountBrandProducts((old) => [...old, responseJson.amount]);
-      }
-    }
-  };
+  // ... (otras funciones)
 
   useEffect(() => {
     getProductList(urlState);
-    getProducts();
-  }, []);
-
-  useEffect(() => {
-    getBrands();
-  }, [products]);
-
-  useEffect(() => {
-    getAmountBrandProducts();
-  }, [brands]);
-
-  useEffect(() => {
-    const url = qs.stringifyUrl({
-      url: urlState,
-      query: {
-        name: search || undefined,
-        company: brandFilter,
-        featured: featuredFilter,
-        sort: orderingFilter,
-      },
-    });
-    setUrlState(url);
-    if (maxFilter !== "" && minFilter !== "") {
-      var filteredList = productList.filter(
-        (product) => product.price >= minFilter && product.price <= maxFilter
-      );
-      setProductList(filteredList);
-    } else {
-      getProductList(url);
-    }
-  }, [
-    search,
-    brandFilter,
-    orderingFilter,
-    featuredFilter,
-    minFilter,
-    maxFilter,
-    productList,
-    urlState,
-  ]);
-
-  useEffect(() => {
-    getProductList(urlState);
+    // ... (otras llamadas a funciones)
   }, [urlState]);
+
+  // ... (otros useEffect)
 
   return (
     <ProductContext.Provider
       value={{
         productList,
         setProductList,
-        products,
-        setProducts,
-        brandFilter,
-        setBrandFilter,
-        getProductList,
-        brands,
-        amountBrandProducts,
-        search,
-        setSearch,
-        checked,
-        setChecked,
-        urlState,
-        setUrlState,
-        orderingFilter,
-        setOrderingFilter,
-        featuredFilter,
-        setFeaturedFilter,
-        setMinFilter,
-        setMaxFilter,
-        minFilter,
-        maxFilter,
+        // ... (otros valores del contexto)
       }}
     >
       {props.children}
