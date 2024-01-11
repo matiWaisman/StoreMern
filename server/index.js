@@ -6,13 +6,7 @@ const path = require("path");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://store-frontend-lilac.vercel.app/",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 const connectDB = require("./db/connect");
 
