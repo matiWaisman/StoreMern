@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const productsRouter = require("./routes/products");
 require("express-async-errors");
 const path = require("path");
