@@ -5,6 +5,14 @@ const path = require("path");
 
 const app = express();
 
+app.use(
+  cors({
+    origin: "https://store-frontend-lilac.vercel.app/",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
+
 const connectDB = require("./db/connect");
 
 const notFound = require("./middleware/notFound");
